@@ -4,7 +4,7 @@ After=postgis95.service
 Requires=postgis95.service
 
 [Service]
-ExecStart=/opt/bin/systemd-docker run --rm --name %n -v /btrfs/hansardku:/data --link postgis95.service:db -e "DB_URI=postgresql://hansardku:kios6ip9uZ0i@db:5432/hansardku" angrygoat/hansardku:0.0.2
+ExecStart=/opt/bin/systemd-docker --cgroups name=systemd run --rm --name %n -v /btrfs/hansardku:/data --link postgis95.service:db -e "DB_URI=postgresql://hansardku:kios6ip9uZ0i@db:5432/hansardku" angrygoat/hansardku:0.0.2
 Restart=always
 RestartSec=10s
 Type=notify

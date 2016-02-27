@@ -4,7 +4,7 @@ After=postgis95.service
 Requires=postgis95.service
 
 [Service]
-ExecStart=/opt/bin/systemd-docker run --rm --name %n -v /btrfs/ealgis:/data --link postgis95.service:db -e DB_ENV_POSTGRES_USER=ealgis -e DB_ENV_POSTGRES_PASSWORD=Uu1quuquoyoo -e DB_PORT_5432_TCP_ADDR=db angrygoat/ealgis:next
+ExecStart=/opt/bin/systemd-docker --cgroups name=systemd run --rm --name %n -v /btrfs/ealgis:/data --link postgis95.service:db -e DB_ENV_POSTGRES_USER=ealgis -e DB_ENV_POSTGRES_PASSWORD=Uu1quuquoyoo -e DB_PORT_5432_TCP_ADDR=db angrygoat/ealgis:next
 Restart=always
 RestartSec=10s
 Type=notify

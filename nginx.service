@@ -4,7 +4,7 @@ After=docker.service
 Requires=docker.service
 
 [Service]
-ExecStart=/opt/bin/systemd-docker run --rm --name %n -p 80:80 -p 443:443 --link armchair-uwsgi.service:armchair --link ealgis-uwsgi.service:ealgis --link hansardku-uwsgi.service:hansardku -v /home/grahame/code/armchair:/home/grahame/code/armchair -v /etc/nginx:/etc/nginx -v /btrfs/climate:/btrfs/climate -v /btrfs/nginx:/btrfs/nginx -v /btrfs/firstblog:/btrfs/firstblog -v /home/grahame/public_html:/home/grahame/public_html -v /home/grahame/code/haiku/html:/home/grahame/code/haiku/html -v /home/grahame/code/isscottreelectedyet.com:/home/grahame/code/isscottreelectedyet.com -v /home/grahame/code/istherestillviolenceagainstwomen.com:/home/grahame/code/istherestillviolenceagainstwomen.com -v /home/grahame/code/ealgis/frontend/compiled:/home/grahame/code/ealgis/frontend/compiled nginx:1.9.10
+ExecStart=/opt/bin/systemd-docker --cgroups name=systemd run --rm --name %n -p 80:80 -p 443:443 --link armchair-uwsgi.service:armchair --link ealgis-uwsgi.service:ealgis --link hansardku-uwsgi.service:hansardku -v /etc/letsencrypt:/etc/letsencrypt -v /home/grahame/code/armchair:/home/grahame/code/armchair -v /etc/nginx:/etc/nginx -v /btrfs/climate:/btrfs/climate -v /btrfs/nginx:/btrfs/nginx -v /btrfs/firstblog:/btrfs/firstblog -v /home/grahame/public_html:/home/grahame/public_html -v /home/grahame/code/haiku/html:/home/grahame/code/haiku/html -v /home/grahame/code/isscottreelectedyet.com:/home/grahame/code/isscottreelectedyet.com -v /home/grahame/code/istherestillviolenceagainstwomen.com:/home/grahame/code/istherestillviolenceagainstwomen.com -v /home/grahame/code/ealgis/frontend/compiled:/home/grahame/code/ealgis/frontend/compiled nginx:1.9.11
 Restart=always
 RestartSec=10s
 Type=notify
